@@ -1,51 +1,73 @@
-import creatures from "../data/creatures";
+import { useState } from "react";
+import CREATURES_CHARACTERISTICS from "../data/creatures";
 
 const Form = () => {
+  const [nameCreature, setNameCreature] = useState(
+    CREATURES_CHARACTERISTICS[0]
+  );
+
+  const changeCreatureHandler = (event) => {
+    const result = CREATURES_CHARACTERISTICS.filter(
+      (el) => el.name === event.target.value
+    );
+    setNameCreature(...result);
+    console.log(...result);
+  };
+
   return (
     <form>
-      <label htmlFor="select_creatures">select_creatures</label>
-      <input
-        type="text"
-        id="select_creatures"
-        name="select_creatures"
-        list="creatures_list"
-      />
-      <datalist id="creatures_list">
-        <option value="Chocolate"></option>
-        <option value="Coconut"></option>
-        <option value="Mint"></option>
-        <option value="Strawberry"></option>
-        <option value="Vanilla"></option>
-      </datalist>
+      <div class="select">
+        <label htmlFor="select_creatures">Список существ</label>
+        <select id="select_creatures" onChange={changeCreatureHandler}>
+          {CREATURES_CHARACTERISTICS.map((el) => {
+            return (
+              <option value={el.name} key={el.id}>
+                {el.name}
+              </option>
+            );
+          })}
+        </select>
+      </div>
       <div>
-        <h2>Name</h2>
+        <h2>{nameCreature.name}</h2>
         <div>
-          <label htmlFor="attack">attack</label>
-          <input type="number" id="attack" value={"1"} name="attack" readOnly />
-          <label htmlFor="defense">defense</label>
+          <label htmlFor="attack">Атака</label>
+          <input
+            type="number"
+            id="attack"
+            value={nameCreature.attack}
+            name="attack"
+            readOnly
+          />
+          <label htmlFor="defense">Защита</label>
           <input
             type="number"
             id="defense"
-            value={"1"}
+            value={nameCreature.defense}
             name="defense"
             readOnly
           />
-          <label htmlFor="damage">damage</label>
-          <input type="text" id="damage" value={"1"} name="damage" readOnly />
-          <label htmlFor="hitpoint">hitpoint</label>
+          <label htmlFor="damage">Урон</label>
+          <input
+            type="text"
+            id="damage"
+            value={`${nameCreature.damage.min} - ${nameCreature.damage.max}`}
+            name="damage"
+            readOnly
+          />
+          <label htmlFor="hitpoint">Здоровье</label>
           <input
             type="number"
             id="hitpoint"
-            value={"1"}
+            value={nameCreature.hitPoints}
             name="hitpoint"
             readOnly
           />
-          <label htmlFor="speed">speed</label>
+          <label htmlFor="speed">Скорость</label>
           <input
             type="number"
             id="speed"
-            value={"1"}
-            min={"1"}
+            value={nameCreature.speed}
             name="speed"
             readOnly
           />
@@ -53,13 +75,7 @@ const Form = () => {
       </div>
       <div>
         <label htmlFor="creature">creature</label>
-        <input
-          type="number"
-          id="creature"
-          value={"1"}
-          min={"1"}
-          name="creature"
-        />
+        <input type="number" id="creature" min={"1"} name="creature" />
       </div>
     </form>
   );
