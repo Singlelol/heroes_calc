@@ -1,9 +1,12 @@
-import Form from './components/Form/Form'
-import './App.css';
+import Form from "./components/Form/Form";
+import "./App.css";
 
 function App() {
   return (
-    <Form />
+    <>
+      <Form />
+      <Form />
+    </>
   );
 }
 

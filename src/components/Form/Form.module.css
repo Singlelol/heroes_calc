@@ -1,0 +1,9 @@
+form {
+  width: 50%;
+  margin: 20px auto;
+}
+
+label {
+  margin-right: 5px;
+  vertical-align: middle;
+}
