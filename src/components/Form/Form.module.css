@@ -3,6 +3,11 @@ form {
   margin: 20px auto;
 }
 
+.amount {
+  width: fit-content;
+  margin: 0 auto;
+}
+
 label {
   margin-right: 5px;
   vertical-align: middle;

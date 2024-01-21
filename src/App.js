@@ -1,12 +1,12 @@
 import Form from "./components/Form/Form";
-import "./App.css";
+import styles from "./App.module.css";
 
 function App() {
   return (
-    <>
+    <div className={styles.wrap}>
       <Form />
       <Form />
-    </>
+    </div>
   );
 }
 

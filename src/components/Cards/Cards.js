@@ -41,10 +41,11 @@ const Cards = (props) => {
   ];
 
   return (
-    <div class={styles.stats_block}>
+    <div className={styles.stats_block}>
       {INPUT_PARAMETR.map((el) => {
         return (
           <Input
+            key={el.id}
             id={el.id}
             text={el.text}
             value={el.value}
