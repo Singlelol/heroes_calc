@@ -1,3 +1,5 @@
+//This component is a custom input
+
 const Input = (props) => {
   return (
     <div>

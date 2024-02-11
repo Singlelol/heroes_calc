@@ -1,5 +1,7 @@
 import styles from "./Card.module.css";
 
+/*This component is a wrapper*/
+
 const Card = (props) => {
   return (
     <div className={styles.card}>

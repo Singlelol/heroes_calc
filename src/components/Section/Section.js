@@ -1,25 +1,28 @@
 import { useState } from "react";
-import CREATURES_CHARACTERISTICS from "../data/creatures";
 import Cards from "../Cards/Cards";
 import Card from "../Card/Card";
 import Select from "../Select/Select";
-import styles from "./Form.module.css";
+import styles from "./Section.module.css";
 
-const Form = () => {
-  const [сreature, setCreature] = useState(CREATURES_CHARACTERISTICS[0]);
+//This component is a creature's section
+
+const Section = (props) => {
+  const [сreature, setCreature] = useState(props.creatures[0]);
+
+  //This function sets creature in section
 
   const changeCreatureHandler = (event) => {
-    const result = CREATURES_CHARACTERISTICS.filter(
+    const result = props.creatures.filter(
       (el) => el.name === event.target.value
     );
     setCreature(...result);
   };
 
   return (
-    <form>
+    <section id={props.id}>
       <Select
         onChange={changeCreatureHandler}
-        creature={CREATURES_CHARACTERISTICS}
+        creature={props.creatures}
         value={сreature.name}
         id={сreature.id}
       />
@@ -30,8 +33,8 @@ const Form = () => {
         <label htmlFor="creature">Количество</label>
         <input type="number" id="creature" min={"1"} name="creature" />
       </div>
-    </form>
+    </section>
   );
 };
 
-export default Form;
+export default Section;

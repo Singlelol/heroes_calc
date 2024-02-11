@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styles from "./Select.module.css";
 
+//This component is a custom creature's select
+
 const SelectList = (props) => {
   return (
     <div className={styles.modal}>
@@ -27,6 +29,7 @@ const SelectList = (props) => {
 
 const Select = (props) => {
   const [isVisible, setIsVisible] = useState(false);
+
   const setVisibilityHandler = () => {
     setIsVisible(!isVisible);
   };

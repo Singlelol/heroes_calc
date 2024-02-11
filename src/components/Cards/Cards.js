@@ -1,6 +1,8 @@
 import Input from "../Input/Input";
 import styles from "./Cards.module.css";
 
+/*This component is the creature's stat card*/
+
 const Cards = (props) => {
   const INPUT_PARAMETR = [
     {

@@ -16,15 +16,6 @@
   text-align: end;
 }
 
-.stats_block input {
-  height: 40px;
-  width: 68px;
-  border: 3px solid #A04C7D;
-  border-radius: 5px;
-  text-align: center;
-  box-sizing: border-box;
-}
-
 .stats_block div:not(:last-child) {
   width: 50%;
 }

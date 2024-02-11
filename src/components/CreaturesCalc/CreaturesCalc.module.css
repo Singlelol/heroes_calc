@@ -1,0 +1,48 @@
+.wrap {
+  display: flex;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  text-align: center;
+}
+
+input[type="button"] {
+  min-width: fit-content;
+}
+
+button,
+input {
+  border: 3px solid #a04c7d;
+  border-radius: 5px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+input {
+  height: 40px;
+  width: 68px;
+}
+
+button {
+  height: 40px;
+  width: fit-content;
+}
+
+.invalid {
+  background-color: red;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: textfield;
+}
