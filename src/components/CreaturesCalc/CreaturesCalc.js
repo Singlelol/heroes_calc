@@ -6,13 +6,10 @@ const CreaturesCalc = (props) => {
   const ROLES_SECTION = ["first", "second"];
 
   const SubmitHandler = (event) => {
-    console.log(event);
-    console.log(event.target, typeof event.target);
     event.preventDefault();
     for (const el of event.target) {
       el.className = "";
-      if (el.value === "") {
-        console.log(el.target);
+      if (!el.value) {
         el.className = styles.invalid;
         el.focus();
         return;

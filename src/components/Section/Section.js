@@ -31,7 +31,13 @@ const Section = (props) => {
       </Card>
       <div className={styles.amount}>
         <label htmlFor="creature">Количество</label>
-        <input type="number" id="creature" min={"1"} name="creature" />
+        <input
+          type="number"
+          id="creature"
+          min="1"
+          name="creature"
+          defaultValue="1"
+        />
       </div>
     </section>
   );
