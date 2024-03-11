@@ -15,6 +15,7 @@ const CreaturesCalc = (props) => {
         return;
       }
     }
+    props.getCreatureStat(event.target);
   };
 
   return (

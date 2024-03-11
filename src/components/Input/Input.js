@@ -10,7 +10,6 @@ const Input = (props) => {
         value={props.value}
         name={props.id}
         readOnly={props.readOnly || false}
-        defaultValue={props.defaultValue || props.value}
       />
     </div>
   );

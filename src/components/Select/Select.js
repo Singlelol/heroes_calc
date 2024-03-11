@@ -36,11 +36,11 @@ const Select = (props) => {
 
   return (
     <div className={styles.select}>
-      <label htmlFor="select_creatures">{props.value}</label>
+      <label htmlFor="select_creatures">Выбрать</label>
       <input
         type="button"
         id="select_creatures"
-        value="Выбрать"
+        value={props.value}
         onClick={setVisibilityHandler}
       />
       {!isVisible || (
