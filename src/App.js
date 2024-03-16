@@ -2,7 +2,11 @@ import CreaturesCalc from "./components/CreaturesCalc/CreaturesCalc";
 //import styles from "./App.module.css";
 
 const calc = ([first, second]) => {
+  //Функция рандомизации урона
+
   const minmax = (min, max) => Math.round(min + Math.random() * (max - min));
+
+  //Функция вычисления базового урона на основании рандомизации урона и количества существ
 
   const baseDamage = (min, max, value) => {
     let result = 0;
@@ -16,35 +20,49 @@ const calc = ([first, second]) => {
     return result;
   };
 
-  const modificateDamageFirst = (attack, defense) => {
-    return attack > defense ? 0.05 * (attack - defense) : 0;
+  //Функция модификатора урона с учетом атаки и защиты
+
+  const modificateDamage = (attack, defense) => {
+    const [attackNum, defenseNum] = [+attack, +defense];
+
+    if (attackNum > defenseNum) {
+      return 1 + 0.05 * (attackNum - defenseNum);
+    } else if (defenseNum > attackNum) {
+      return 1 - 0.025 * (defenseNum - attackNum);
+    }
+    return 1;
   };
 
-  const modificateDamageSecond = (attack, defense) => {
-    return defense > attack ? 1 - 0.025 * (defense - attack) : 1;
-  };
+  //Функция расчета урона при атаке
 
   const damageFirst = Math.round(
-    baseDamage(+first.min, +first.max, +first.value) *
-      (1 + modificateDamageFirst(+first.attack, +second.defense)) *
-      modificateDamageSecond(+first.attack, +second.defense)
+    baseDamage(first.min, first.max, first.value) *
+      modificateDamage(first.attack, second.defense)
   );
+
+  //Функция рассчета количества живых существ в атакованном отряде
 
   const valueSecond = Math.max(
-    Math.ceil((second.value * second.health - damageFirst) / second.health),
+    Math.ceil((+second.value * +second.health - damageFirst) / +second.health),
     0
   );
+
+  //Функция рассчета урона при контратаке
 
   const damageSecond = Math.round(
-    baseDamage(+second.min, +second.max, valueSecond) *
-      (1 + modificateDamageFirst(+second.attack, +first.defense)) *
-      modificateDamageSecond(+second.attack, +first.defense)
+    baseDamage(second.min, second.max, valueSecond) *
+      modificateDamage(second.attack, first.defense)
   );
 
+  //Функция рассчета живых существ в атакующем отряде
+
   const valueFirst = Math.max(
-    Math.ceil((first.value * first.health - damageSecond) / first.health),
+    Math.ceil((+first.value * +first.health - damageSecond) / +first.health),
     0
   );
+
+  //Функция генерации ответа для вывода на экран
+
   const resultString = `${first.value} ${first.name} атаковали ${
     second.value
   } ${second.name}. Они нанесли им ${damageFirst} урона и убили ${
@@ -54,6 +72,7 @@ const calc = ([first, second]) => {
   } нанесли ${damageSecond} урона и убили ${first.value - valueFirst} ${
     first.name
   }`;
+
   console.log(resultString);
 
   return [damageFirst, valueFirst, damageSecond, valueSecond];
