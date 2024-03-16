@@ -9,13 +9,16 @@ const calc = ([first, second]) => {
   //Функция вычисления базового урона на основании рандомизации урона и количества существ
 
   const baseDamage = (min, max, value) => {
+    const [minNum, maxNum, valueNum] = [+min, +max, +value];
     let result = 0;
-    const count = value > 10 ? 10 : value;
+    const count = valueNum > 10 ? 10 : valueNum;
+
     for (let i = 0; i < count; i++) {
-      result += minmax(min, max);
+      result += minmax(minNum, maxNum);
     }
-    if (value > 10) {
-      return Math.floor(0.1 * value * result);
+    
+    if (valueNum > 10) {
+      return Math.floor(0.1 * valueNum * result);
     }
     return result;
   };
